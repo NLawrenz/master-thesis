@@ -19,8 +19,8 @@ def abstention_fit(model, x_test,y_test, low = 0, high = 0.16, step = 0.01, erro
         return None
 
 def cost(model, x_test,y_test,interval):
-    pred_probs = model.predict_proba(x_test)
-    max_prob = np.max(pred_probs)[:,1]
+    pred_probs = model.predict_proba(x_test)[:,1]
+    #max_prob = np.max(pred_probs)
     mask = np.abs(pred_probs-0.5) > interval
     size = np.sum(mask)/len(mask)
     _x = x_test[mask]
