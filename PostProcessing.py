@@ -4,7 +4,7 @@ from sklearn.metrics import matthews_corrcoef
 
 
 def abstention_fit(model, x_test,y_test, low = 0, high = 0.16, step = 0.01, error = 'symmetric'):
-    if error is 'symmetric':
+    if error == 'symmetric':
         intervals = np.arange(low, high, step=step)
         mcc_values = np.zeros(len(intervals))
         sizes = np.zeros(len(intervals))
@@ -12,6 +12,7 @@ def abstention_fit(model, x_test,y_test, low = 0, high = 0.16, step = 0.01, erro
         for i in range(len(intervals)):
             mcc, size = cost(model, x_test, y_test, intervals[i])
             mcc_values[i] = mcc
+            print(i,mcc)
         best = intervals[(mcc_values*sizes).argmax()]
         return(best)
         
