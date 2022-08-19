@@ -14,7 +14,7 @@ def abstention_fit(model, x_test,y_test, low = 0, high = 0.16, step = 0.01, erro
             mcc_values[i] = mcc
             print(i,mcc)
         best = intervals[(mcc_values*sizes).argmax()]
-        return(best)
+        return(5)
         
     else:
         return None
